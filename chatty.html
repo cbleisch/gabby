@@ -1,0 +1,51 @@
+<template name="profile">
+  {{#if currentUser}}
+      <h1>Your Profile</h1>
+  {{/if}}
+</template>
+
+<template name="firstPage">
+  <h1>This is the first page</h1>
+  <a href="/second" >Second page</a>
+</template>
+ 
+<template name="secondPage">
+  <h1>This is the second page</h1>
+  <a href="/" >First page</a>
+</template>
+
+<template name="chatroom">
+  <h1>Chatroom</h1>
+  {{#if currentUser}}
+  {{#each messages}}
+    {{> message}}
+  {{/each}}
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2">
+        <form class="new-message">
+            <input type="text" name="text" placeholder="Type to add new message" autofocus />
+            <button type="submit" name="submit" class="btn btn-success btn-sm">Chat</button>
+        </form>
+    </div>
+  </div>
+  {{/if}}
+</template>
+
+<template name="message">
+    <div class="row message-row">
+        <div class="col-md-2">
+            <!-- Image -->
+            <!-- Name -->
+            <span>
+                {{#if username}}
+                    <small>{{username}}</small><br />
+                {{/if}}
+                <small>{{formatDate(createdAt)}}</small>
+            </span>
+        </div>
+        <div class="col-md-10">
+            {{text}}
+        </div>
+    </div>
+    
+</template>

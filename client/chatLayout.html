@@ -1,0 +1,36 @@
+<template name="mainSideWithChat">
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <!-- <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                   Menu Links
+                </li>
+            </ul> -->
+            {{#if currentUser}}
+            <div id="online-users">
+                <h4>Online Users <small>({{usersOnlineCount}})</small></h4>
+                {{#each usersOnline}}
+                  {{> user}}
+                {{/each}}
+            </div>
+            <div id="setting-links">
+              <a href="/profile" class="btn btn-sm btn-primary btn-block">Your Profile</a>
+            </div>
+            {{/if}}
+            {{> loginButtons}}
+        </div>
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                {{>yield}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="user">
+    <div>
+        <span class="label label-primary active-user" data-toggle="tooltip" data-placement="right" title="Tooltip on right">{{username}}</span> (login at:)
+    </div>
+</template>
+
+
