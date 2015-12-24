@@ -38,11 +38,15 @@ if (Meteor.isClient) {
       event.preventDefault();
 
       // Get value from form element
-      var text = event.target.text.value;
+      var text = event.target.text.value.trim();
 
       // Insert a task into the collection
-      if(text.length > 0)
+      if(text.length > 0 && text.length < 500) {
         Meteor.call("addMessage", text);
+      }
+      // else {
+       // message length error here 
+      // }
 
       // Clear form
       event.target.text.value = "";
