@@ -41,7 +41,8 @@ if (Meteor.isClient) {
       var text = event.target.text.value;
 
       // Insert a task into the collection
-      Meteor.call("addMessage", text);
+      if(text.length > 0)
+        Meteor.call("addMessage", text);
 
       // Clear form
       event.target.text.value = "";
